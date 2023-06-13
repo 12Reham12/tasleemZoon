@@ -1,0 +1,76 @@
+<section class="vh-100">
+    <div class="container py-5 h-90" >
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-8">
+          <div class="card" style="border-radius: 1rem;border:2px dashed gray;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-lg-block">
+                <img src="assets/img/Logo (2).png"
+                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;display: flex;margin: 35px 30px 30px 30px;background-color: #393f81;" />
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+  
+                  <form [formGroup]="Loginform" (ngSubmit)='submitLogin(Loginform)'>
+  
+                    <div class="alert mt-2 alert-danger" *ngIf="loginInvalid">
+                      <p>
+                        <i class="fa-solid fa-circle-exclamation"></i> 
+                        The username or password were not recognised
+                      </p> 
+                    </div>
+
+                    <div class="d-flex align-items-center mb-2 pb-1">
+                      <span class="h1 fw-bold mb-0" style="font-size:26px ;">تسجيل الدخول إلى حسابك</span>
+                    </div>
+  
+                    <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5> -->
+  
+                    <div class="form-outline mb-4">
+                      <input
+                        type="username"
+                        formControlName="username"
+                        id="form2Example17"
+                        class="form-control form-control-lg"
+                        placeholder="أسم المستخدم "
+                      />
+                      <div  class="alert mt-2 alert-danger" *ngIf="Loginform.get('username')?.errors != null 
+                      && Loginform.get('username')?.touched" >
+                        <p *ngIf="Loginform.get('username')?.errors?.['required'] "><i class="fa-solid fa-circle-exclamation"></i> اسم المستخدم مطلوب</p>
+                        <p *ngIf="Loginform.get('username')?.errors?.['pattern'] "><i class="fa-solid fa-circle-exclamation"></i>
+                          اسم المستخدم يجب أن يحتوي على حرف واحد كبير وصغير</p>
+                        <p *ngIf="Loginform.get('username')?.errors?.['forbiddenvalue'] "><i class="fa-solid fa-circle-exclamation"></i> username not allowed word [Admin or Adminstrator]</p>
+  
+                      </div>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form2Example27" formControlName="password" class="form-control form-control-lg" placeholder="كلمة المرور"/>
+                      <!-- <label class="form-label" for="form2Example27">Password</label> -->
+                    
+                      <div style="height: 50px;" class="alert mt-2 alert-danger" *ngIf="Loginform.get('password')?.errors != null 
+                      && Loginform.get('password')?.touched" >
+                        <p *ngIf="Loginform.get('password')?.errors?.['required'] "><i class="fa-solid fa-circle-exclamation"></i>كلمة السر مطلوبه</p>
+                        <p *ngIf="Loginform.get('password')?.errors?.['pattern'] "><i class="fa-solid fa-circle-exclamation"></i> يجب أن تحتوي كلمة المرور على أرقام وحرف [2-8]</p>
+                        <!-- <p>email must contians @</p> -->
+                      </div>
+                    </div>
+  
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-lg btn-block" [disabled]="Loginform.invalid" type="submit" style="background-color:#404c68;color: white;">تسجيل</button>
+                    </div>
+  
+                    <a class="small text-muted" href="#!">نسيت كلمه السر ؟</a>
+                    <p class="mb-5 pb-lg-2" style="color: #5760c0;">لا امتلك حساب <a [routerLink]="['/BeforeRegister']"
+                        style="color: #393f81;">اشترك من هنا</a></p>
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
